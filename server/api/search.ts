@@ -5,6 +5,7 @@ export default defineEventHandler(async (event) => {
   const query = getQuery(event)
 
     const searchTerm = query.searchTerm as string;
+    const fileName = query.file as string
     const client = await connectToDB();
 
     const myCollection = client.collections.use("PDFLibrary")
@@ -21,6 +22,7 @@ export default defineEventHandler(async (event) => {
         }, {
             autoLimit: 2,
             includeVector: true,
+            filters: myCollection.filter.byProperty("file_name").equal(fileName)
         })
         // console.log('response from ai', response)
         console.log('response from ai', response.objects)

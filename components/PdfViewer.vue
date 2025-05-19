@@ -51,7 +51,7 @@
 </template>
 
 <script setup>
-import { ref, watch, onMounted, nextTick } from 'vue'
+import { ref, onMounted, nextTick } from 'vue'
 
 const loading = ref(false)
 const error = ref(null)
