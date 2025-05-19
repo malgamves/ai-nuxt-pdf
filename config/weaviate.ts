@@ -1,7 +1,7 @@
 import weaviate from 'weaviate-client'
 import 'dotenv/config'
 
-const weaviateURL = process.env.WEAVIATE_HOST_URL as string
+const weaviateURL = process.env.WEAVIATE_URL as string
 const weaviateKey = process.env.WEAVIATE_ADMIN_KEY as string
 const openaiKey = process.env.OPENAI_API_KEY as string
 
