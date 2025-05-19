@@ -1,7 +1,7 @@
 <template>
   <div class="h-full flex flex-col">
     
-    <div class="flex-grow relative">
+    <div class="flex-grow overflow-y-auto relative">
       <ClientOnly>
         <vue-pdf-embed
           :source="source"
