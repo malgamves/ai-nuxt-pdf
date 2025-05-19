@@ -72,7 +72,7 @@ const handleAsk = async () => {
       })
   
       // Make API call
-      const response = await fetch(`http://localhost:3000/api/search?searchTerm=${encodeURIComponent(newMessage.value)}`, {
+      const response = await fetch(`/api/search?searchTerm=${encodeURIComponent(newMessage.value)}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
