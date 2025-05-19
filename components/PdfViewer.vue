@@ -1,9 +1,6 @@
 <template>
   <div class="h-full flex flex-col">
     
-    
-    
-    
     <div class="flex-grow relative">
       <ClientOnly>
         <vue-pdf-embed
@@ -66,7 +63,7 @@ const loadPdf = async (pdfPath) => {
   try {
     loading.value = true
     error.value = null
-    source.value = null // Reset source first
+    source.value = null 
     await nextTick() // Wait for the component to update
     source.value = pdfPath
     currentPage.value = 1
@@ -106,12 +103,47 @@ const prevPage = () => {
   }
 }
 
+// Converts to Uint8 Array
+const base64ToUint8Array = (base64String)  => {
+    const binaryString = atob(base64String);
+    const bytes = new Uint8Array(binaryString.length);
+    for (let i = 0; i < binaryString.length; i++) {
+      bytes[i] = binaryString.charCodeAt(i);
+    }
+    return bytes;
+  };
+
 const handleFileUpload = (event) => {
   const file = event.target.files[0]
   if (file && file.type === 'application/pdf') {
     const reader = new FileReader()
-    reader.onload = (e) => {
+    reader.onload = async (e) => {
       loadPdf(e.target.result)
+
+      // Getting pdf ready for upload
+      const newPdf = {
+        id: crypto.randomUUID(),
+          name: file.name,
+          data: e.target?.result 
+        };
+e
+        const base64String = newPdf.data.split(",")[1];
+        const pdfBytes = base64ToUint8Array(base64String);
+
+        const response = await fetch('http://localhost:3000/api/insert', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            pdfBuffer: Array.from(pdfBytes),
+            fileName: newPdf.name // Convert Uint8Array to regular array for JSON
+          })
+        });
+
+        const data = await response.json();
+        console.log("data", data)
+
     }
     reader.readAsDataURL(file)
   } else {

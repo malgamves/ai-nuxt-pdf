@@ -10,9 +10,14 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "nuxt": "^3.13.0",
+    "@vueuse/core": "^10.9.0",
+    "dotenv": "^16.5.0",
+    "nuxt": "^3.17.3",
+    "pdf-parse": "^1.1.1",
+    "pdf-to-png-converter": "^3.6.4",
+    "pdfjs-dist": "^4.10.38",
     "vue-pdf-embed": "^1.2.1",
-    "@vueuse/core": "^10.9.0"
+    "weaviate-client": "^3.5.5"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.11.2"
