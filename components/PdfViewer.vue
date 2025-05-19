@@ -1,9 +1,6 @@
 <template>
   <div class="h-full flex flex-col">
     
-    
-    
-    
     <div class="flex-grow relative">
       <ClientOnly>
         <vue-pdf-embed
@@ -54,7 +51,7 @@
 </template>
 
 <script setup>
-import { ref, watch, onMounted, nextTick } from 'vue'
+import { ref, onMounted, nextTick } from 'vue'
 
 const loading = ref(false)
 const error = ref(null)

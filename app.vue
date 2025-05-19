@@ -8,7 +8,7 @@
             <div v-for="message in messages" :key="message.id" class="flex gap-2">
               <div :class="[
                 'rounded-lg p-3 max-w-[80%]',
-                message.sender === 'you' ? 'bg-orange-100 ml-auto' : 'bg-blue-100'
+                message.sender === 'user' ? 'bg-orange-100 ml-auto' : 'bg-blue-100'
               ]">
                 {{ message.text }}
               </div>
@@ -47,9 +47,7 @@ import { ref } from 'vue'
 import { useStorage } from '@vueuse/core'
 
 const messages = useStorage('chat-messages', [
-  { id: 1, sender: 'you', text: 'Hello!' },
-  { id: 2, sender: 'ai', text: 'Hi! How can I help you with the PDF?' },
-  { id: 3, sender: 'you', text: 'Can you analyze this document for me?' }
+  { id: 1, sender: 'ai', text: 'Hi! How can I help you with the PDF?' },
 ])
 
 const newMessage = ref('')

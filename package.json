@@ -10,9 +10,9 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "nuxt": "^3.13.0",
-    "vue-pdf-embed": "^1.2.1",
-    "@vueuse/core": "^10.9.0"
+    "@vueuse/core": "^10.9.0",
+    "nuxt": "^3.17.3",
+    "vue-pdf-embed": "^1.2.1"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.11.2"
