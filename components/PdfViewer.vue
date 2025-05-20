@@ -130,7 +130,7 @@ e
         const base64String = newPdf.data.split(",")[1];
         const pdfBytes = base64ToUint8Array(base64String);
 
-        const response = await fetch('http://localhost:3000/api/insert', {
+        const response = await fetch('/api/insert', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
