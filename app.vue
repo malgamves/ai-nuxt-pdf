@@ -16,7 +16,7 @@
             </div>
           </div>
           <div>
-            <Dropdown api-url="http://localhost:3000/api/agg"
+            <Dropdown api-url="/api/agg"
               @selection-changed="onFileSelected" />
             <div v-if="selectedFile">
               Selected File: {{ selectedFile }}
@@ -78,7 +78,7 @@ const handleAsk = async () => {
     })
 
     // Make API call
-    const response = await fetch(`http://localhost:3000/api/search?searchTerm=${encodeURIComponent(newMessage.value)}&file=${encodeURIComponent(selectedCategory.value)}`, {
+    const response = await fetch(`/api/search?searchTerm=${encodeURIComponent(newMessage.value)}&file=${encodeURIComponent(selectedCategory.value)}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

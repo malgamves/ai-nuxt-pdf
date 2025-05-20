@@ -1,7 +1,7 @@
 <template>
   <div class="h-full flex flex-col">
     
-    <div class="flex-grow relative">
+    <div class="flex-grow overflow-y-auto relative">
       <ClientOnly>
         <vue-pdf-embed
           :source="source"
@@ -122,15 +122,14 @@ const handleFileUpload = (event) => {
 
       // Getting pdf ready for upload
       const newPdf = {
-        id: crypto.randomUUID(),
           name: file.name,
           data: e.target?.result 
         };
-e
+
         const base64String = newPdf.data.split(",")[1];
         const pdfBytes = base64ToUint8Array(base64String);
 
-        const response = await fetch('http://localhost:3000/api/insert', {
+        const response = await fetch('/api/insert', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
