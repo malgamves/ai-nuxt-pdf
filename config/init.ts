@@ -1,5 +1,5 @@
 import { connectToDB } from './weaviate.js';
-import weaviate, { configure } from 'weaviate-client'
+import weaviate from 'weaviate-client'
 
 async function main() {
 
@@ -11,7 +11,7 @@ async function main() {
     
         const response = await client.collections.create({
             name: 'PDFLibrary',
-            // Define your VoyageAI vectorizer 
+            // Define your vectorizer 
             vectorizers:
                 weaviate.configure.vectorizer.text2VecOpenAI(),
             generative: weaviate.configure.generative.openAI()
